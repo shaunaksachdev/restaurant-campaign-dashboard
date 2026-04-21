@@ -139,7 +139,7 @@ def generate_sample_data():
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.title("📊 Campaign Dashboard")
+    st.title("Campaign Dashboard")
     st.markdown("---")
 
     uploaded = st.file_uploader("Upload CSV or Excel", type=["csv", "xlsx", "xls"])
