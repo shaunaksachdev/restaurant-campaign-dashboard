@@ -205,6 +205,19 @@ present_pairs = [(title, base, incr) for title, base, incr in BAR_PAIRS
 if present_pairs:
     st.markdown('<div class="section-title">Campaign vs Incremental</div>', unsafe_allow_html=True)
 
+    base_cols = [(title, base) for title, base, incr in present_pairs]
+    kpi_cols2 = st.columns(len(base_cols))
+    for col_ui, (title, base_col) in zip(kpi_cols2, base_cols):
+        val = camp_row.get(base_col, "—")
+        col_ui.markdown(f"""
+        <div class="kpi-card">
+            <div class="kpi-label">{title}</div>
+            <div class="kpi-value">{fmt(val)}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<div style='margin-top:16px'></div>", unsafe_allow_html=True)
+
     per_row = 3
     for row_start in range(0, len(present_pairs), per_row):
         chunk = present_pairs[row_start:row_start + per_row]
